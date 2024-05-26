@@ -1,4 +1,6 @@
 package com.grace.jpa_data_spring.student;
 
-public interface StudentRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface StudentRepository extends JpaRepository<Student, Integer> {
 }
