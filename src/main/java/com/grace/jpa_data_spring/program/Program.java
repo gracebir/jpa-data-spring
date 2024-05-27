@@ -1,6 +1,11 @@
 package com.grace.jpa_data_spring.program;
 
+import com.grace.jpa_data_spring.course.Course;
 import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "programs")
@@ -15,13 +20,18 @@ public class Program {
     @Column(nullable = false)
     private Integer duration;
 
+    @OneToMany(mappedBy = "program")
+    private List<Course> course;
+
+
     public Program() {
     }
 
-    public Program(Long program_id, String program_name, Integer duration) {
+    public Program(Long program_id, String program_name, Integer duration, List<Course> course) {
         this.program_id = program_id;
         this.program_name = program_name;
         this.duration = duration;
+        this.course = course;
     }
 
     public Long getProgram_id() {
@@ -46,5 +56,13 @@ public class Program {
 
     public void setDuration(Integer duration) {
         this.duration = duration;
+    }
+
+    public List<Course> getCourse() {
+        return course;
+    }
+
+    public void setCourse(List<Course> course) {
+        this.course = course;
     }
 }
