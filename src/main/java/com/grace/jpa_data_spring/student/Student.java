@@ -31,6 +31,8 @@ public class Student {
 
     private Date enrollment_date;
 
+    public Student(){}
+
     public Student(Integer id, String firstname, String lastname, String email, Date birth_date, Gender gender, String phone_number, String address, Date enrollment_date) {
         this.id = id;
         this.firstname = firstname;
@@ -79,7 +81,7 @@ public class Student {
         return birth_date;
     }
 
-    public void setBirth_data(Date birth_date) {
+    public void setBirth_date(Date birth_date) {
         this.birth_date = birth_date;
     }
 
