@@ -15,6 +15,7 @@ public class Course {
 
     @Column(nullable = false, unique = true)
     private String course_code;
+
     @Column(nullable = false)
     private Integer credits;
 
