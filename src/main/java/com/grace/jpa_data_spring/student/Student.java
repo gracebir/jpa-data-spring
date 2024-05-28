@@ -1,8 +1,11 @@
 package com.grace.jpa_data_spring.student;
 
+import com.grace.jpa_data_spring.fee.Fee;
+import com.grace.jpa_data_spring.program.Program;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "students")
@@ -31,9 +34,16 @@ public class Student {
 
     private Date enrollment_date;
 
+    @ManyToOne
+    @JoinColumn(name = "program_id")
+    private Program program;
+
+    @OneToMany(mappedBy = "student")
+    private List<Fee> feeList;
+
     public Student(){}
 
-    public Student(Integer id, String firstname, String lastname, String email, Date birth_date, Gender gender, String phone_number, String address, Date enrollment_date) {
+    public Student(Integer id, String firstname, String lastname, String email, Date birth_date, Gender gender, String phone_number, String address, Date enrollment_date, Program program, List<Fee> feeList) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -43,6 +53,8 @@ public class Student {
         this.phone_number = phone_number;
         this.address = address;
         this.enrollment_date = enrollment_date;
+        this.program = program;
+        this.feeList = feeList;
     }
 
     public Integer getId() {
@@ -89,6 +101,14 @@ public class Student {
         return gender;
     }
 
+    public Program getProgram() {
+        return program;
+    }
+
+    public void setProgram(Program program) {
+        this.program = program;
+    }
+
     public void setGender(Gender gender) {
         this.gender = gender;
     }
@@ -115,5 +135,13 @@ public class Student {
 
     public void setEnrollment_date(Date enrollment_date) {
         this.enrollment_date = enrollment_date;
+    }
+
+    public List<Fee> getFeeList() {
+        return feeList;
+    }
+
+    public void setFeeList(List<Fee> feeList) {
+        this.feeList = feeList;
     }
 }

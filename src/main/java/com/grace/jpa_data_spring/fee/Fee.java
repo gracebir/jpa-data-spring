@@ -1,20 +1,19 @@
 package com.grace.jpa_data_spring.fee;
 
-import com.grace.jpa_data_spring.course.Course;
 import com.grace.jpa_data_spring.student.Student;
 import jakarta.persistence.*;
 
-import javax.xml.crypto.Data;
+import java.util.Date;
 
 @Entity
 @Table(name = "fees")
 public class Fee {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long fee_id;
 
     private Double amount;
-    private Data due_date;
+    private Date due_date;
 
     @Enumerated(EnumType.STRING)
     private Status payment_status;
@@ -26,7 +25,7 @@ public class Fee {
     public Fee() {
     }
 
-    public Fee(Long fee_id, Double amount, Data due_date, Status payment_status, Student student) {
+    public Fee(Long fee_id, Double amount, Date due_date, Status payment_status, Student student) {
         this.fee_id = fee_id;
         this.amount = amount;
         this.due_date = due_date;
@@ -50,11 +49,11 @@ public class Fee {
         this.amount = amount;
     }
 
-    public Data getDue_date() {
+    public Date getDue_date() {
         return due_date;
     }
 
-    public void setDue_date(Data due_date) {
+    public void setDue_date(Date due_date) {
         this.due_date = due_date;
     }
 
